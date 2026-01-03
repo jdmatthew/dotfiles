@@ -1,0 +1,49 @@
+fastfetch
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export EDITOR=micro
+export TERMINAL=kitty
+export MOZ_USE_XINPUT2=1
+
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+rate-mirrors() {
+  if [[ $# -ne 0 ]]; then
+    command rate-mirrors "$@"
+  elif [[ $EUID -ne 0 ]]; then
+    echo "Re-running with sudo for root access..."
+    command sudo rate-mirrors --protocol https --allow-root --disable-comments --save /etc/pacman.d/mirrorlist arch
+  else
+    command rate-mirrors --protocol https --allow-root --disable-comments --save /etc/pacman.d/mirrorlist arch
+  fi
+}
+
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory
+
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

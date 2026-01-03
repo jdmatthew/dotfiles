@@ -1,0 +1,27 @@
+configuration {
+	show-icons: true;
+}
+@theme "catppuccin-default"
+window {
+	border-radius: 8px;
+	padding: 4px;
+	background-color: #1e1e2ecc;
+}
+element-icon {
+	size: 1.5em;
+}
+element-text {
+	vertical-align: 0.5;
+}
+element normal.normal{
+	background-color: transparent;
+}
+element alternate.normal {
+	background-color: transparent;
+}
+element {
+	border-radius: 4px;
+}
+scrollbar {
+	handle-rounded-corners: true;
+}
