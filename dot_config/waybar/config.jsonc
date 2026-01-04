@@ -83,7 +83,7 @@
 	        "on-scroll-down": "shift_down"
         },
         "tooltip-format": "{calendar}",
-        "format": "{:%b %d %H:%M} 󰃰"
+        "format": "{:%b %d %H:%M}"
     },
 
     "group/group-tray": {
