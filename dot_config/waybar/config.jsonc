@@ -1,19 +1,21 @@
 // -*- mode: jsonc -*-
 {
-    "margin": 2,
-    "spacing": 2,
-    "height": 36,
+    "margin": 0,
+    "spacing": 10,
+    "height": 30,
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window"
+	    "hyprland/workspaces"
     ],
     "modules-center": [
     ],
     "modules-right": [
-    	"group/group-tray",
-        "group/group-status",
+	"tray",
+        "idle_inhibitor",
+	"pulseaudio",
+	"backlight",
+	"battery",
         "clock",
-        "group/group-power"
+        "custom/power"
     ],
     "hyprland/workspaces": {
 		"format": "{icon}",
@@ -21,14 +23,11 @@
     		"magic": "󰐃"
     	},
 		"persistent-workspaces": {
-			"*": 6,
+			"*": 6
 		},
 		"show-special": true,
 		"special-visible-only": false
     },
-    
-    
-
     "group/group-status": {
         "orientation": "inherit",
         "modules": [
@@ -86,13 +85,6 @@
         "format": "{:%b %d %H:%M}"
     },
 
-    "group/group-tray": {
-        "orientation": "inherit",
-        "modules": [
-            "tray",
-            "idle_inhibitor"
-        ]
-    },
     "tray": {
         "spacing": 10
     },
@@ -103,39 +95,9 @@
             "deactivated": "󰛊"
         }
     },
-    // power drawer
-    "group/group-power": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "power-child",
-            "transition-left-to-right": false
-        },
-        "modules": [
-            "custom/power",
-            "custom/quit",
-            "custom/lock",
-            "custom/reboot"
-        ]
-    },
-    "custom/quit": {
-        "format": "󰗽",
-        "tooltip": false,
-        "on-click": "hyprctl dispatch exit"
-    },
-    "custom/lock": {
-        "format": "󰌾",
-        "tooltip": false,
-        "on-click": "swaylock"
-    },
-    "custom/reboot": {
-        "format": "󰜉",
-        "tooltip": false,
-        "on-click": "reboot"
-    },
     "custom/power": {
         "format": "󰐥",
         "tooltip": false,
-        "on-click": "shutdown now"
+        "on-click": "rofi -show drun"
     }
 }

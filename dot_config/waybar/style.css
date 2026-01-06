@@ -13,7 +13,7 @@ tooltip {
 }
 
 tooltip box {
-	padding: 4;
+	padding: 4px;
 }
 
 tooltip label {
@@ -22,27 +22,11 @@ tooltip label {
 }
 
 window#waybar {
-    background-color: transparent;
+    background-color: @base;
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
 }
-/*
-window#waybar.empty .modules-right{
-    padding-left: 0;
-}
-*/
-
-/* you can set a style on hover for any module like this */
-#clock, #workspaces, #window, #group-status, #group-power, #group-tray{
-    background-color: @base;
-    padding: 0 10px 0 10px;
-    border-radius: 8px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: @surface1;
-}
-
 .modules-center{
     background-color: transparent;
     min-width: 256px
@@ -52,30 +36,22 @@ window#waybar.empty .modules-right{
     padding: 0;
 }
 
-window#waybar.empty #window {
-	opacity: 0;
-}
-
 #workspaces button:first-child {
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
-    margin-left: -2px;
 }
 #workspaces button:last-child {
     border-top-right-radius: inherit;
     border-bottom-right-radius: inherit;
-    margin-right: -2px;
 }
 
 #workspaces button {
     margin:0;
-    padding: 0 10px;
+    padding: 0 8px;
     background-color: transparent;
     color: #ffffff;
-    /* box-shadow: inset 0 0 transparent; */
     border: none;
     border-radius: 0;
-    margin: -2px 0 -2px 0;
 }
 
 #workspaces button:hover {
@@ -89,7 +65,7 @@ window#waybar.empty #window {
 }
 
 #workspaces button:not(.empty):not(.active) {
-    box-shadow: inset 0 -3px rgba(255, 255, 255, 0.5);
+   background-color: rgba(255, 255, 255, 0.1); 
 }
 
 #workspaces button.urgent {
@@ -108,7 +84,7 @@ window#waybar.empty #window {
 }
 
 #battery.critical:not(.charging) {
-	animation-name: blink;
+    animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
@@ -135,7 +111,10 @@ window#waybar.empty #window {
     color: @text;
 }
 
-.power-child > .module, #group-status > *:not(:last-child) > .module, #group-tray > *:not(:last-child) > .module{
+#group-status > *:not(:last-child) > .module, #group-tray > *:not(:last-child) > .module{
     padding-right: 10px;
 }
 
+#custom-power {
+    padding: 0 10px 0 2px;
+}
