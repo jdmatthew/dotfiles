@@ -25,3 +25,8 @@ element {
 scrollbar {
 	handle-rounded-corners: true;
 }
+listview {
+	lines: 10; 
+	dynamic: true;
+	fixed-height: false;
+	}
